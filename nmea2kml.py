@@ -34,7 +34,7 @@ def convert(input):
     result = []
     for s in input:
         t = s.rstrip('\r\n').split(',')
-        if t[0] != '$GPGGA':
+        if (t[0] != '$GPGGA') or (t[2] == '') or (t[4] == '') or (t[9] == ''):
             continue
         result.append('%.7f,%.7f,%s' % (to_google(t[4]), to_google(t[2]), t[9]))
     return result
