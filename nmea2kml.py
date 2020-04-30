@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sys
-import fileinput
-from sys import stdout
+from fileinput import input as finput
+from sys import argv, exit, stdout
 
 template_before = '''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://earth.google.com/kml/2.1">
@@ -45,7 +44,7 @@ def write_output(points):
     stdout.write(template_after)
 
 def main(argv):
-    write_output(convert(fileinput.input()))
+    write_output(convert(finput()))
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    exit(main(argv))
