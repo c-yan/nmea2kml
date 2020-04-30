@@ -25,9 +25,10 @@ template_after = '''    </MultiGeometry>
 </Document>
 </kml>\n'''
 
+# dddmm.mmmm -> ddd.dddd
 def to_google(s):
-    t = s.split('.')
-    return int(t[0][:-2]) + (int(t[0][-2:]) + int(t[1]) / (10.0 ** len(t[1]))) / 60
+    i = s.find('.')
+    return int(s[:i - 2]) + float(s[i - 2:]) / 60
 
 def convert(input):
     result = []
